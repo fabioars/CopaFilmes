@@ -2,6 +2,6 @@
 export interface Movie {
     id: string;
     titulo: string;
-    ano: string;
+    ano: number;
     nota: number;
 }
