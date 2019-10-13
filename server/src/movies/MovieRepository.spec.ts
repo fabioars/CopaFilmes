@@ -1,16 +1,13 @@
-import request from 'supertest';
 import axios from 'axios';
 import HTTP from 'http-status-code';
-import { Express } from 'express';
-import application from './app';
+import MovieReposiory from './MovieRepository';
+import env from '../env';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-describe('Application', () => {
-    let app;
-    let testPort: string;
-    const apiResponse = {
+describe('Movie Repository', () => {
+    const response = {
         status: HTTP.OK,
         data: [
             { id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 },
@@ -32,23 +29,46 @@ describe('Application', () => {
         ],
     };
 
-    beforeAll(() => {
-        testPort = '54321';
-        app = application(testPort);
+    let repository = null;
+
+    beforeEach(() => {
+        repository = new MovieReposiory();
     });
 
-    afterAll(() => {
-        app.close();
+    afterEach(() => {
+        repository = null;
     });
 
-    describe('Application', () => {
-        it('should response with a list of movies', async () => {
-            mockedAxios.get.mockResolvedValue(apiResponse);
+    describe('getAll', () => {
+        it('should call axios get', () => {
+            repository.getAll();
 
-            const response = await request(app).get('/api/movies');
+            expect(mockedAxios.get)
+                .toHaveBeenCalled();
+        });
 
-            expect(response.status).toEqual(200);
-            expect(response.body).toEqual(apiResponse.data);
+        it('should call the right endpoint', () => {
+            repository.getAll();
+
+            expect(mockedAxios.get)
+                .toHaveBeenCalledWith(`${env.movie_api}/api/filmes`);
+        });
+
+        it('should fetch a list', () => {
+            mockedAxios.get.mockResolvedValue(response);
+
+            return repository.getAll().then(res => {
+                expect(res.data.length).toBeDefined();
+                expect(res.data.length).toBeGreaterThan(0);
+            });
+        });
+
+        it('should fetch a list of movies', () => {
+            mockedAxios.get.mockResolvedValue(response);
+
+            return repository.getAll().then(res => {
+                expect(res.data).toBe(response.data);
+            });
         });
     });
 });
