@@ -1,5 +1,6 @@
 import express from 'express';
 import movies from './movies';
+import match from './match';
 
 export default function main(port: string) {
     const app = express();
@@ -8,6 +9,7 @@ export default function main(port: string) {
 
     // Regiser modules
     app.use('/api/movies/', movies);
+    app.use('/api/match/', match);
 
     // tslint:disable-next-line: no-console
     app.listen(port, () => console.log(`Listening on: ${port}`));

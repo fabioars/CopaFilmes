@@ -1,7 +1,6 @@
 import request from 'supertest';
 import axios from 'axios';
 import HTTP from 'http-status-code';
-import { Express } from 'express';
 import application from './app';
 
 jest.mock('axios');
@@ -42,13 +41,54 @@ describe('Application', () => {
     });
 
     describe('Application', () => {
-        it('should response with a list of movies', async () => {
-            mockedAxios.get.mockResolvedValue(apiResponse);
+        describe('Movies Module', () => {
+            it('should respond with a list of movies', async () => {
+                mockedAxios.get.mockResolvedValue(apiResponse);
 
-            const response = await request(app).get('/api/movies');
+                const response = await request(app).get('/api/movies');
 
-            expect(response.status).toEqual(200);
-            expect(response.body).toEqual(apiResponse.data);
+                expect(response.status).toEqual(200);
+                expect(response.body).toEqual(apiResponse.data);
+            });
+        });
+
+        describe('Match Module', () => {
+            it('should respond the winning movies', async () => {
+                const data = [
+                    { id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 },
+                    { id: 'tt4881806', titulo: 'Jurassic World: Reino Ameaçado', ano: 2018, nota: 6.7 },
+                    { id: 'tt5164214', titulo: 'Oito Mulheres e um Segredo', ano: 2018, nota: 6.3 },
+                    { id: 'tt7784604', titulo: 'Hereditário', ano: 2018, nota: 7.8 },
+                    { id: 'tt4154756', titulo: 'Vingadores: Guerra Infinita', ano: 2018, nota: 8.8 },
+                    { id: 'tt5463162', titulo: 'Deadpool 2', ano: 2018, nota: 8.1 },
+                    { id: 'tt3778644', titulo: 'Han Solo: Uma História Star Wars', ano: 2018, nota: 7.2 },
+                    { id: 'tt3501632', titulo: 'Thor: Ragnarok', ano: 2017, nota: 7.9 },
+                ];
+
+                const response = await request(app).post('/api/match').send(data);
+
+                expect(response.status).toEqual(200);
+                expect(response.body).toEqual({
+                    first: { id: 'tt4154756', titulo: 'Vingadores: Guerra Infinita', ano: 2018, nota: 8.8 },
+                    second: { id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 },
+                });
+            });
+
+            it('should respond 500 if send an odd list', async () => {
+                const data = [
+                    { id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 },
+                    { id: 'tt4881806', titulo: 'Jurassic World: Reino Ameaçado', ano: 2018, nota: 6.7 },
+                    { id: 'tt5164214', titulo: 'Oito Mulheres e um Segredo', ano: 2018, nota: 6.3 },
+                    { id: 'tt7784604', titulo: 'Hereditário', ano: 2018, nota: 7.8 },
+                    { id: 'tt4154756', titulo: 'Vingadores: Guerra Infinita', ano: 2018, nota: 8.8 },
+                    { id: 'tt5463162', titulo: 'Deadpool 2', ano: 2018, nota: 8.1 },
+                    { id: 'tt3778644', titulo: 'Han Solo: Uma História Star Wars', ano: 2018, nota: 7.2 },
+                ];
+
+                const response = await request(app).post('/api/match').send(data);
+
+                expect(response.status).toEqual(500);
+            });
         });
     });
 });
