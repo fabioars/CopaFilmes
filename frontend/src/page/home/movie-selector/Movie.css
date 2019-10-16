@@ -1,12 +1,14 @@
 .Movie {
+    position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     background-color: #fff;
+    color: var(--primary-color);
     height: 120px;
     cursor: pointer;
-    padding: 40px;
+    padding: 10px 30px 10px 66px;
     box-sizing: border-box;
 }
 
@@ -14,6 +16,41 @@
     background-color: #ccc;
 }
 
+.Movie:before {
+    content: '';
+    display: block;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    border: 1px solid var(--primary-color);
+    transform: translateY(-50%);
+}
+
 .Movie--selected {
     border: 2px solid var(--bg-color-darken);
+}
+
+.Movie:after {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.Movie--selected.Movie:after {
+    background-color: var(--primary-color);
+}
+
+.Movie__title {
+    font-weight: bold;
+}
+
+.Movie__year {
+    font-size: 14px;
 }

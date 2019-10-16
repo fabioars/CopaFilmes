@@ -29,7 +29,7 @@ export default function MovieSelector() {
                 {movies.map(movie => {
                     return (
                         <li className="MovieSelector__item" key={movie.id}>
-                            <Movie movie={movie}/>
+                            <Movie movie={movie} />
                         </li>
                     )
                 })}
