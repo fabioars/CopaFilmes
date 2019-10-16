@@ -1,0 +1,19 @@
+.Movie {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    height: 120px;
+    cursor: pointer;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.Movie:hover {
+    background-color: #ccc;
+}
+
+.Movie--selected {
+    border: 2px solid var(--bg-color-darken);
+}
