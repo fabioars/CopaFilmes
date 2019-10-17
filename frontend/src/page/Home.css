@@ -1,3 +1,9 @@
 .Home {
     padding-top: 90px;
 }
+
+.Home__toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}

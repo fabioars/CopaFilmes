@@ -16,6 +16,7 @@ export default function MovieSelector({ onSelectedChange }) {
             .then(data => {
                 setLoading(false);
                 setMovies(data);
+                onSelectedChange(selectedMovies);
             });
     });
 
@@ -24,13 +25,12 @@ export default function MovieSelector({ onSelectedChange }) {
             const isOnSelectedList = selectedMovies.indexOf(movie) === -1;
             const isListFull = selectedMovies.length >= 8;
 
-            if (!isOnSelectedList || isListFull) {
-                setSelectedMovies(selectedMovies.filter(m => m.id !== movie.id));
-            } else {
-                setSelectedMovies([...selectedMovies, movie])
-            }
+            let newSelectedMovies = (!isOnSelectedList || isListFull)
+                ? selectedMovies.filter(m => m.id !== movie.id)
+                : [...selectedMovies, movie];
 
-            onSelectedChange(selectedMovies);
+            setSelectedMovies(newSelectedMovies);
+            onSelectedChange(newSelectedMovies);
         };
     }
 

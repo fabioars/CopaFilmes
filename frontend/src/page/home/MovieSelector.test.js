@@ -103,7 +103,7 @@ describe('Movie Selector', () => {
         movieElements[1].click();
 
 
-        expect(list.length).toBe(3);
+        expect(list.length).toBe(2);
     });
 
 
