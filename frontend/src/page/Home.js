@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import MovieSelector from './home/MovieSelector';
 import MovieCounter from './home/MovieCounter';
 import './Home.css';
+import Button from '../components/Button';
 
 export default function Home() {
     const [selectedMovies, setSelectedMovies] = useState([]);
@@ -15,6 +16,7 @@ export default function Home() {
                 </Header>
                 <div className="Home__toolbar">
                     <MovieCounter count={selectedMovies.length} />
+                    <Button disabled={selectedMovies.length < 8}>Gerar meu campeonato</Button>
                 </div>
                 <MovieSelector onSelectedChange={setSelectedMovies} />
             </div>

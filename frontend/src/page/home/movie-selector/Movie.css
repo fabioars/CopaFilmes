@@ -11,6 +11,7 @@
     padding: 10px 30px 10px 66px;
     box-sizing: border-box;
     border: 2px solid transparent;
+    transition: all ease 200ms;
 }
 
 .Movie:hover {
