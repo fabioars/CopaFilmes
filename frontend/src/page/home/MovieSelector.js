@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Movie from './movie-selector/Movie';
+import { fetchMovies } from '../../api/movies';
 import './MovieSelector.css';
 
 export default function MovieSelector({ onSelectedChange }) {
@@ -12,7 +13,7 @@ export default function MovieSelector({ onSelectedChange }) {
             return;
         }
 
-        fetch('/api/movies').then(r => r.json())
+        fetchMovies()
             .then(data => {
                 setLoading(false);
                 setMovies(data);
@@ -39,7 +40,7 @@ export default function MovieSelector({ onSelectedChange }) {
     }
 
     return (
-        <div className="MovieSelector">
+        <section className="MovieSelector">
 
             <ul className="MovieSeletor__list">
                 {movies.map(movie => {
@@ -54,7 +55,7 @@ export default function MovieSelector({ onSelectedChange }) {
                     )
                 })}
             </ul>
-        </div>
+        </section>
     );
 };
 

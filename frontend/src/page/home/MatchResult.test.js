@@ -1,7 +1,7 @@
 import React from 'react';
 import { unmountComponentAtNode } from 'react-dom';
 import renderer from 'react-test-renderer';
-import MovieCounter from './MovieCounter';
+import MatchResult from './MatchResult';
 
 describe('Movie Counter', () => {
     let container = null;
@@ -11,7 +11,6 @@ describe('Movie Counter', () => {
         document.body.appendChild(container);
     });
 
-
     afterEach(() => {
         unmountComponentAtNode(container);
         container.remove();
@@ -19,20 +18,8 @@ describe('Movie Counter', () => {
     });
 
     it('renders correctly', () => {
-        const tree = renderer.create(
-            <MovieCounter />
-            ).toJSON();
+        const tree = renderer.create(<MatchResult />).toJSON();
 
-        expect(tree).toMatchSnapshot();
-    });
-
-    it('renders correctly with the right number', () => {
-        const tree = renderer.create(<MovieCounter count={5}/>).toJSON();
-        expect(tree).toMatchSnapshot();
-    });
-
-    it('renders correctly with string', () => {
-        const tree = renderer.create(<MovieCounter count="5"/>).toJSON();
         expect(tree).toMatchSnapshot();
     });
 });
