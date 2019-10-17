@@ -15,6 +15,14 @@ describe('Movie Selector', () => {
         { id: 'tt5463162', titulo: 'Deadpool 2', ano: 2018, nota: 8.1 },
         { id: 'tt3778644', titulo: 'Han Solo: Uma História Star Wars', ano: 2018, nota: 7.2 },
         { id: 'tt3501632', titulo: 'Thor: Ragnarok', ano: 2017, nota: 7.9 },
+        { id: 'tt2854926', titulo: 'Te Peguei!', ano: 2018, nota: 7.1 },
+        { id: 'tt0317705', titulo: 'Os Incríveis', ano: 2004, nota: 8.0 },
+        { id: 'tt3799232', titulo: 'A Barraca do Beijo', ano: 2018, nota: 6.4 },
+        { id: 'tt1365519', titulo: 'Tomb Raider: A Origem', ano: 2018, nota: 6.5 },
+        { id: 'tt1825683', titulo: 'Pantera Negra', ano: 2018, nota: 7.5 },
+        { id: 'tt5834262', titulo: 'Hotel Artemis', ano: 2018, nota: 6.3 },
+        { id: 'tt7690670', titulo: 'Superfly', ano: 2018, nota: 5.1 },
+        { id: 'tt6499752', titulo: 'Upgrade', ano: 2018, nota: 7.8 },
     ];
 
     beforeEach(() => {
@@ -42,5 +50,61 @@ describe('Movie Selector', () => {
 
         expect(container.querySelectorAll('li').length).toBe(movies.length);
     });
+
+
+    it('should select a movie if clicked', async () => {
+        await act(async () => {
+            render(<MovieSelector />, container);
+        });
+
+        container.querySelector('li .Movie').click();
+
+        expect(container.querySelector('.Movie--selected')).toBeTruthy();
+    });
+
+    it('should select only 8 movies', async () => {
+        await act(async () => {
+            render(<MovieSelector />, container);
+        });
+
+        Array.from(container.querySelectorAll('.Movie')).forEach(movieElement => {
+            movieElement.click();
+        });
+
+        expect(container.querySelectorAll('.Movie--selected').length).toBe(8);
+    });
+
+    it('should unselect case click twice', async () => {
+        await act(async () => {
+            render(<MovieSelector />, container);
+        });
+
+
+        container.querySelector('li .Movie').click();
+        container.querySelector('li .Movie').click();
+
+        expect(container.querySelector('.Movie--selected')).toBeNull();
+    });
+
+    it('should give the selected movies', async () => {
+        let list = [];
+
+        await act(async () => {
+            render(<MovieSelector onSelectedChange={movies => {
+                list = [...movies];
+            }} />, container);
+        });
+
+
+        const movieElements = container.querySelectorAll('li .Movie');
+        movieElements[0].click();
+        movieElements[1].click();
+        movieElements[2].click();
+        movieElements[1].click();
+
+
+        expect(list.length).toBe(3);
+    });
+
 
 });

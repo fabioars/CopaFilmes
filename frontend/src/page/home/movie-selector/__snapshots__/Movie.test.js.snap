@@ -1,8 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Movie Header renders correctly 1`] = `
+exports[`Movie renders correctly 1`] = `
 <div
   className="Movie"
+>
+  <span
+    className="Movie__title"
+  >
+    Os Incríveis 2
+  </span>
+  <span
+    className="Movie__year"
+  >
+    2018
+  </span>
+</div>
+`;
+
+exports[`Movie renders correctly if selected 1`] = `
+<div
+  className="Movie Movie--selected"
 >
   <span
     className="Movie__title"

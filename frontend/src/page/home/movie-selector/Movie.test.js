@@ -19,45 +19,54 @@ describe('Movie', () => {
         container = null;
     });
 
-    describe('Header', () => {
-        it('renders correctly', () => {
-            const tree = renderer.create(
-                <Movie movie={{ id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 }} />
-                ).toJSON();
+    it('renders correctly', () => {
+        const tree = renderer.create(
+            <Movie movie={{ id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 }} />
+            ).toJSON();
 
-            expect(tree).toMatchSnapshot();
-        });
-
-        it('should call onClick props onClick', () => {
-            const callback = jest.fn();
-
-            act(() => {
-                render(
-                    <Movie
-                        movie={{ id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 }}
-                        onClick={callback}
-                    />,
-                    container
-                );
-            });
-
-            container.querySelector('.Movie').click();
-            expect(callback.mock.calls.length).toBe(1);
-        });
-
-        it('should have a Movie--selected class if isSelected iquals true', () => {
-            act(() => {
-                render(
-                    <Movie
-                        movie={{ id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 }}
-                        isSelected={true}
-                    />,
-                    container
-                );
-            });
-
-            expect(document.querySelector('.Movie--selected')).toBeTruthy();
-        });
+        expect(tree).toMatchSnapshot();
     });
 
+    it('renders correctly if selected', () => {
+        const tree = renderer.create(
+            <Movie 
+                movie={{ id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 }} 
+                isSelected 
+            />
+            ).toJSON();
+
+        expect(tree).toMatchSnapshot();
+    });
+
+
+    it('should call onClick props onClick', () => {
+        const callback = jest.fn();
+
+        act(() => {
+            render(
+                <Movie
+                    movie={{ id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 }}
+                    onClick={callback}
+                />,
+                container
+            );
+        });
+
+        container.querySelector('.Movie').click();
+        expect(callback.mock.calls.length).toBe(1);
+    });
+
+    it('should have a Movie--selected class if isSelected iquals true', () => {
+        act(() => {
+            render(
+                <Movie
+                    movie={{ id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 }}
+                    isSelected={true}
+                />,
+                container
+            );
+        });
+
+        expect(document.querySelector('.Movie--selected')).toBeTruthy();
+    });
 });

@@ -10,6 +10,7 @@
     cursor: pointer;
     padding: 10px 30px 10px 66px;
     box-sizing: border-box;
+    border: 2px solid transparent;
 }
 
 .Movie:hover {
@@ -29,7 +30,7 @@
 }
 
 .Movie--selected {
-    border: 2px solid var(--bg-color-darken);
+    border-color: var(--bg-color-darken);
 }
 
 .Movie:after {
