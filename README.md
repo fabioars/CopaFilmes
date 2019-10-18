@@ -1,4 +1,6 @@
 # CopaFilmes
+[![Actions Status](https://github.com/fabioars/CopaFilmes/workflows/frontend/badge.svg)](https://github.com/fabioars/CopaFilmes/actions)
+[![Actions Status](https://github.com/fabioars/CopaFilmes/workflows/backend/badge.svg)](https://github.com/fabioars/CopaFilmes/actions)
 
 Projeto feito usando TDD, para criar um campeonato de filmes.
 
