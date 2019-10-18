@@ -5,7 +5,7 @@ export default class MatchMaker {
     static make(movies: Movie[]): Match[] {
         if (movies.length === 0) {
             throw Error('EmptyList');
-        } else if(movies.length % 2 !== 0) {
+        } else if (movies.length % 2 !== 0) {
             throw Error('OddListError');
         }
 
