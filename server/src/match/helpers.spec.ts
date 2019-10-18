@@ -1,4 +1,4 @@
-import { Movie } from '../movies/interfaces'
+import { Movie } from '../movies/interfaces';
 import { sortCriteriaMaker } from './helpers';
 
 describe('sortCriteriaMaker', () => {
@@ -29,5 +29,5 @@ describe('sortCriteriaMaker', () => {
         expect(listToSort[0].nota).toBe(6.5);
         expect(listToSort[1].nota).toBe(7.2);
         expect(listToSort[2].nota).toBe(8.5);
-    })
+    });
 });

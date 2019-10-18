@@ -54,20 +54,22 @@ describe('Movie Repository', () => {
                 .toHaveBeenCalledWith(`${env.movie_api}/api/filmes`);
         });
 
-        it('should fetch a list', () => {
+        it('should fetch a list', done => {
             mockedAxios.get.mockResolvedValue(response);
 
             return repository.getAll().then(res => {
                 expect(res.data.length).toBeDefined();
                 expect(res.data.length).toBeGreaterThan(0);
+                done();
             });
         });
 
-        it('should fetch a list of movies', () => {
+        it('should fetch a list of movies', done => {
             mockedAxios.get.mockResolvedValue(response);
 
             return repository.getAll().then(res => {
                 expect(res.data).toBe(response.data);
+                done();
             });
         });
     });

@@ -2,6 +2,7 @@ import request from 'supertest';
 import axios from 'axios';
 import HTTP from 'http-status-code';
 import application from './app';
+import { doesNotReject } from 'assert';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -9,6 +10,8 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 describe('Application', () => {
     let app;
     let testPort: string;
+    let server;
+
     const apiResponse = {
         status: HTTP.OK,
         data: [
@@ -33,11 +36,12 @@ describe('Application', () => {
 
     beforeAll(() => {
         testPort = '54321';
-        app = application(testPort);
+        app = application();
+        server = app.listen(testPort);
     });
 
     afterAll(() => {
-        app.close();
+        server.close();
     });
 
     describe('Application', () => {
@@ -53,7 +57,7 @@ describe('Application', () => {
         });
 
         describe('Match Module', () => {
-            it('should respond the winning movies', async () => {
+            it('should respond the winning movies', async done => {
                 const data = [
                     { id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 },
                     { id: 'tt4881806', titulo: 'Jurassic World: Reino Ameaçado', ano: 2018, nota: 6.7 },
@@ -72,9 +76,10 @@ describe('Application', () => {
                     first: { id: 'tt4154756', titulo: 'Vingadores: Guerra Infinita', ano: 2018, nota: 8.8 },
                     second: { id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 },
                 });
+                done();
             });
 
-            it('should respond 500 if send an odd list', async () => {
+            it('should respond 500 if send an odd list', async done => {
                 const data = [
                     { id: 'tt3606756', titulo: 'Os Incríveis 2', ano: 2018, nota: 8.5 },
                     { id: 'tt4881806', titulo: 'Jurassic World: Reino Ameaçado', ano: 2018, nota: 6.7 },
@@ -88,6 +93,7 @@ describe('Application', () => {
                 const response = await request(app).post('/api/match').send(data);
 
                 expect(response.status).toEqual(500);
+                done();
             });
         });
     });
