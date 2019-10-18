@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Counter renders correctly 1`] = `
+<div
+  className="MovieCounter"
+>
+  <span
+    className="MovieCounter__title"
+  >
+    Selecionados
+  </span>
+  <span
+    className="MovieCounter__counter"
+  >
+    0
+     de 8 filmes
+  </span>
+</div>
+`;
+
+exports[`Movie Counter renders correctly with string 1`] = `
+<div
+  className="MovieCounter"
+>
+  <span
+    className="MovieCounter__title"
+  >
+    Selecionados
+  </span>
+  <span
+    className="MovieCounter__counter"
+  >
+    5
+     de 8 filmes
+  </span>
+</div>
+`;
+
+exports[`Movie Counter renders correctly with the right number 1`] = `
+<div
+  className="MovieCounter"
+>
+  <span
+    className="MovieCounter__title"
+  >
+    Selecionados
+  </span>
+  <span
+    className="MovieCounter__counter"
+  >
+    5
+     de 8 filmes
+  </span>
+</div>
+`;

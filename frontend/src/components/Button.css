@@ -1,0 +1,28 @@
+.Button {
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 0;
+    padding: 0 44px;
+    min-height: 55px;
+    cursor: pointer;
+    transition: all ease 300ms;
+}
+
+.Button:hover {
+    background-color: #222;
+}
+
+.Button:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    transform: scale(0.95);
+}
+
+@media screen and (max-width: 768px) {
+    .Button {
+        min-height: 55px;
+        padding: 0 22px;
+    }
+}

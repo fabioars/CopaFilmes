@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<header
+  className="Header"
+>
+  <h1
+    className="Header__title"
+  >
+    
+  </h1>
+  <h2
+    className="Header__subtitle"
+  >
+    Campeonato de filmes
+  </h2>
+  <div
+    className="Header__description"
+  />
+</header>
+`;
+
+exports[`Header renders correctly with children 1`] = `
+<header
+  className="Header"
+>
+  <h1
+    className="Header__title"
+  >
+    Fase de Seleção
+  </h1>
+  <h2
+    className="Header__subtitle"
+  >
+    Campeonato de filmes
+  </h2>
+  <div
+    className="Header__description"
+  >
+    Uma descrição básica para o teste
+  </div>
+</header>
+`;
+
+exports[`Header renders correctly with title 1`] = `
+<header
+  className="Header"
+>
+  <h1
+    className="Header__title"
+  >
+    Fase de Seleção
+  </h1>
+  <h2
+    className="Header__subtitle"
+  >
+    Campeonato de filmes
+  </h2>
+  <div
+    className="Header__description"
+  />
+</header>
+`;

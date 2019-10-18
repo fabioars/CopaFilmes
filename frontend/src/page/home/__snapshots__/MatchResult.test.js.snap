@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Counter renders correctly 1`] = `
+<section
+  className="MatchResult"
+>
+  <div
+    className="MatchResult__item"
+  >
+    <span
+      className="MatchResult__position"
+    >
+      1º
+    </span>
+    <span
+      className="MatchResult__movie"
+    >
+      Vingadores: Guerra Infinita
+    </span>
+  </div>
+  <div
+    className="MatchResult__item"
+  >
+    <span
+      className="MatchResult__position"
+    >
+      2º
+    </span>
+    <span
+      className="MatchResult__movie"
+    >
+      Os Incríveis 2
+    </span>
+  </div>
+</section>
+`;
