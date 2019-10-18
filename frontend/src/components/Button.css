@@ -19,3 +19,10 @@
     pointer-events: none;
     transform: scale(0.95);
 }
+
+@media screen and (max-width: 768px) {
+    .Button {
+        min-height: 55px;
+        padding: 0 22px;
+    }
+}

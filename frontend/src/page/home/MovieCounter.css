@@ -5,3 +5,16 @@
     color: #fff;
     font-weight: bold;
 }
+
+@media screen and (max-width: 768px) {
+    .MovieCounter {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .MovieCounter {
+        font-size: 18px;
+        justify-content: center;
+    }
+}
