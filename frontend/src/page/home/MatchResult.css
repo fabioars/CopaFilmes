@@ -1,0 +1,22 @@
+/* MatchResult */
+.MatchResult__item {
+    margin-bottom: 16px;
+    min-height: 144px;
+    display: flex;
+    align-items: center;
+}
+.MatchResult__position {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    align-self: stretch;
+    font-size: 48px;
+    text-align: center;
+    color: #fff;
+    background-color: var(--bg-color-darken);
+}
+.MatchResult__movie {
+    font-size: 22px;
+    padding: 20px 30px;
+}
