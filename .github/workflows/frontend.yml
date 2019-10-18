@@ -1,4 +1,4 @@
-name: Backend CI
+name: Frontend CI
 
 on: [push]
 
@@ -19,9 +19,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install, build, and test
       run: |
-        cd server
+        cd frontend
         npm install
-        npm run lint
         npm run test
       env:
         CI: true
