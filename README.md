@@ -54,7 +54,7 @@ Depois usar os comandos presentes no aquivo `package.json` pra rodar
 $ yarn run start # iniciando na porta 3000
 ```
 
-## Running the tests
+## Rodando os testes
 
 Para rodar os testes, basta rodar o comando `yarn run test` tanto do front-end quanto no backend.
 
@@ -62,6 +62,6 @@ Para rodar os testes, basta rodar o comando `yarn run test` tanto do front-end q
 $ yarn run test
 ```
 
-## Authors
+## Autor
 
 * **Fabio Soares** - [fabioars](https://github.com/fabioars)
