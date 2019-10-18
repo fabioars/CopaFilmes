@@ -4,6 +4,7 @@
     min-height: 144px;
     display: flex;
     align-items: center;
+    background-color: #fff;
 }
 .MatchResult__position {
     display: flex;

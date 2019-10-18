@@ -41,12 +41,26 @@ export default function Home() {
         );
     }
 
+    function renderReader() {
+        let title = 'Fase de seleção';
+        let description = 'Selecione 8 filmes que você deseja que entrem na competição e depois pressione o botão Gerar Meu Campeonato para prosseguir.';
+
+        if(matchResult) {
+            title = 'Resultado Final';
+            description='Veja o resultado do Campeonato de filmes de forma simples e rápida.';
+        }
+
+        return (
+            <Header title={title}>
+                <p>{description}</p>
+            </Header>
+        );
+    }
+
     return (
         <main className="Home">
             <div className="container">
-                <Header title="Fase de seleção">
-                    <p>Selecione 8 filmes que você deseja que entrem na competição e depois pressione o botão Gerar Meu Campeonato para prosseguir.</p>
-                </Header>
+                {renderReader()}
                 {renderContent()}
             </div>
         </main>
