@@ -10,6 +10,8 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 describe('Application', () => {
     let app;
     let testPort: string;
+    let server;
+
     const apiResponse = {
         status: HTTP.OK,
         data: [
@@ -34,11 +36,12 @@ describe('Application', () => {
 
     beforeAll(() => {
         testPort = '54321';
-        app = application(testPort);
+        app = application();
+        server = app.listen(testPort);
     });
 
     afterAll(() => {
-        app.close();
+        server.close();
     });
 
     describe('Application', () => {
