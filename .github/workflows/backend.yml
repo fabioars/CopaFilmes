@@ -22,6 +22,7 @@ jobs:
         cd server
     - name: npm install, build, and test
       run: |
+        pwd
         npm install
         npm run lint
         npm run test:coverage
